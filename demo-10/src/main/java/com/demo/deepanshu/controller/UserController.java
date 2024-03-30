@@ -22,13 +22,13 @@ public class UserController {
 
     @Autowired
     private CouponDAO couponDAO;
-
+//endpoint to add a new user
     @PostMapping("/add")
     public ResponseEntity<?> addUser(@RequestBody User user) {
         userDAO.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("User added successfully");
     }
-
+//endpoint to add a new coupon
     @PostMapping("/coupons/add")
     public ResponseEntity<?> addCoupon(@RequestBody Coupon coupon) {
         couponDAO.addCoupon(coupon);
