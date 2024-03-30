@@ -33,3 +33,63 @@ INSERT INTO User (name) VALUES ('John');
 INSERT INTO User (name) VALUES ('Alice');
 INSERT INTO Coupon (coupon, discountPercentage) VALUES ('OFF5', 5.0);
 INSERT INTO Coupon (coupon, discountPercentage) VALUES ('OFF10', 10.0);
+
+
+ER DIAGRAM- 
+
++----------------+           +---------------+
+  |     User       |           |     Coupon    |
+  +----------------+           +---------------+
+  | userId (PK)    |           | couponId (PK) |
+  | name           |           | coupon        |
+  +----------------+           | discountPct   |
+                               +---------------+
+                                     |
+                                     |
+                                     |
+                                     v
+                              +--------------+
+                              |    Orders    |
+                              +--------------+
+                              | orderId (PK) |
+                              | userId (FK)  |
+                              | quantity     |
+                              | amount       |
+                              | coupon       |
+                              +--------------+
+                                     |
+                                     |
+                                     |
+                                     v
+                             +---------------+
+                             |  Transaction  |
+                             +---------------+
+                             | transactionId |
+                             | orderId (FK)  |
+                             | userId (FK)   |
+                             | status        |
+                             +---------------+
+
+
+CLASS DIAGRAM-
+   +------------------+            +-------------------+
+   |       User       |            |      Coupon       |
+   +------------------+            +-------------------+
+   | -userId: int     |            | -couponId: int    |
+   | -name: String    |            | -coupon: String   |
+   +------------------+            | -discountPct: double |
+                                    +-------------------+
+                                            |
+                                            |
+                    +-----------------------+-----------------------+
+                    |                                               |
+                    v                                               v
+             +---------------+                             +----------------+
+             |    Orders     |                             |  Transaction   |
+             +---------------+                             +----------------+
+             | -orderId: int |                             | -transactionId: int |
+             | -userId: int  |                             | -orderId: int      |
+             | -quantity: int|                             | -userId: int       |
+             | -amount: double |                            | -status: String    |
+             | -coupon: String |                            +----------------+
+             +---------------+
