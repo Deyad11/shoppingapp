@@ -1,0 +1,35 @@
+this is my relational schema of database-
+create database shoppingapp;
+use shoppingapp;
+CREATE TABLE IF NOT EXISTS User (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Coupon (
+    couponId INT AUTO_INCREMENT PRIMARY KEY,
+    coupon VARCHAR(50) NOT NULL,
+    discountPercentage DECIMAL(5, 2) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Orders (
+    orderId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    quantity INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    coupon VARCHAR(50),
+    FOREIGN KEY (userId) REFERENCES User(userId)
+);
+
+CREATE TABLE IF NOT EXISTS Transaction (
+    transactionId INT AUTO_INCREMENT PRIMARY KEY,
+    orderId INT NOT NULL,
+    userId INT NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (orderId) REFERENCES Orders(orderId),
+    FOREIGN KEY (userId) REFERENCES User(userId)
+);
+INSERT INTO User (name) VALUES ('John');
+INSERT INTO User (name) VALUES ('Alice');
+INSERT INTO Coupon (coupon, discountPercentage) VALUES ('OFF5', 5.0);
+INSERT INTO Coupon (coupon, discountPercentage) VALUES ('OFF10', 10.0);
