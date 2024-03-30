@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/fetchCoupons")
 public class CouponController {
-
+// Endpoint to fetch available coupons and their discount percentages
     @GetMapping
     public ResponseEntity<Map<String, Integer>> getCoupons() {
         Map<String, Integer> coupons = new HashMap<>();
         coupons.put("OFF5", 5);
         coupons.put("OFF10", 10);
+     // Return the map of coupons
         return ResponseEntity.ok(coupons);
     }
 }
