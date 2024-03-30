@@ -2,6 +2,11 @@
 The relational schema,er diagram and classs diagram in db file.
 In demo10 is my acutal project with all the files is created and I used MySQL for database.
 In application properties file make sure to add your MYSQL workbench username and password instead of mine.
+Steps to run this java project-
+1. Clone the git repository locally.
+2. import the sts project which is my demo10 folder
+3. start the spring application as a spring boot application
+4. interact with application by various endpoints
 The assumptions I made in this project-
 1. There is only a single product with fixed price and fixed quantity avaiable and it will remain same after you restart the application but will change accordinly during the process of placing order. I also created a uri to add user into the database.
 2. In the coupon case i also created a uri to add coupon and the assumption is that a single coupon can only be used once by a user when placing order in a single session. and i can be reused when you restart the application.
